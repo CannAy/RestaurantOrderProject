@@ -2,7 +2,7 @@
 
 namespace WebUI.ViewComponents.LayoutComponents
 {
-	public class _LayoutSidebarComponentPartial :ViewComponent
+	public class _LayoutScriptComponentPartial : ViewComponent
 	{
 		public IViewComponentResult Invoke()
 		{
