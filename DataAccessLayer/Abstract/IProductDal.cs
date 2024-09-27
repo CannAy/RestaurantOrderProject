@@ -9,5 +9,6 @@ namespace DataAccessLayer.Abstract
 {
     public interface IProductDal : IGenericDal<Product>
     {
+        List<Product> GetProductsWithCategories(); //imzayı tanımladık. EfProducDal içinde de içini tanımlayacağız.
     }
 }
