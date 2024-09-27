@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.EntityFramework
 {
-    public class EfSocialMediaDal : GenericRepository<SocialMedia>, ISocialMediaDal,
+    public class EfSocialMediaDal : GenericRepository<SocialMedia>, ISocialMediaDal
     {
         public EfSocialMediaDal(Context context) : base(context)
         {
