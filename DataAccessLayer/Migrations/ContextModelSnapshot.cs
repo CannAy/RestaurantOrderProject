@@ -219,9 +219,8 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ProductStatus")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ProductStatus")
+                        .HasColumnType("bit");
 
                     b.HasKey("ProductId");
 

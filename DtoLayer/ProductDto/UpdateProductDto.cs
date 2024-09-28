@@ -13,6 +13,7 @@ namespace DtoLayer.ProductDto
         public string Description { get; set; }
         public decimal Price { get; set; }
         public string ImageUrl { get; set; }
-        public string ProductStatus { get; set; }
+        public bool ProductStatus { get; set; }
+        public int CategoryId { get; set; }
     }
 }

@@ -57,11 +57,12 @@ namespace SignalRApi.Controllers
                Price = createProductDto.Price,
                ProductName = createProductDto.ProductName,
                ProductStatus = createProductDto.ProductStatus,
+               CategoryId = createProductDto.CategoryId,
             });
             return Ok("Ürün Bilgisi Eklendi");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteProduct(int id)
         {
             var value = _productService.TGetById(id);
@@ -69,7 +70,7 @@ namespace SignalRApi.Controllers
             return Ok("Ürün Bilgisi Silindi");
         }
 
-        [HttpGet("GetProduct")]
+        [HttpGet("{id}")]
         public IActionResult GetProduct(int id)
         {
             var value = _productService.TGetById(id);
@@ -87,6 +88,7 @@ namespace SignalRApi.Controllers
                 ProductName = updateProductDto.ProductName,
                 ProductStatus = updateProductDto.ProductStatus,
                 ProductId = updateProductDto.ProductId,
+                CategoryId= updateProductDto.CategoryId,
             });
             return Ok("Ürün Bilgisi Güncellendi");
         }

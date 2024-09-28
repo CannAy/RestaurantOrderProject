@@ -1,6 +1,9 @@
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddHttpClient(); //admin layout category kýsmý için.
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
