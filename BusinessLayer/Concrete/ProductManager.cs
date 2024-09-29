@@ -18,6 +18,16 @@ namespace BusinessLayer.Concrete
             _productDal = productDal;
         }
 
+        public string TProductNameByMaxPrice()
+        {
+            return _productDal.ProductNameByMaxPrice();
+        }
+
+        public string TProductNameByMinPrice()
+        {
+            return _productDal.ProductNameByMinPrice();
+        }
+
         public void TAdd(Product entity)
         {
             _productDal.Add(entity);
@@ -41,6 +51,26 @@ namespace BusinessLayer.Concrete
         public List<Product> TGetProductsWithCategories()
         {
             return _productDal.GetProductsWithCategories();
+        }
+
+        public int TProductCount()
+        {
+            return _productDal.ProductCount();
+        }
+
+        public int TProductCountByCategoryNameDrink()
+        {
+            return _productDal.ProductCountByCategoryNameDrink();
+        }
+
+        public int TProductCountByCategoryNameHamburger()
+        {
+            return _productDal.ProductCountByCategoryNameHamburger();
+        }
+
+        public decimal TProductPriceAvg()
+        {
+            return _productDal.ProductPriceAvg();
         }
 
         public void TUpdate(Product entity)

@@ -7,10 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Abstract
 {
-    public interface ICategoryDal : IGenericDal<Category>
+    public interface IOrderDal:IGenericDal<Order>
     {
-        int CategoryCount(); //değer dönecek
-        int ActiveCategoryCount(); 
-        int PassiveCategoryCount();
     }
 }
