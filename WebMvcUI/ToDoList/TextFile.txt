@@ -9,13 +9,18 @@
 --kategori adına göre ürün sayısı 2 OK
 
 --ORTALAMA FİYAT ok
---en yüksek fiyatlı ürün
---en düşük fiyatlı ürün
---ortalama hamburger fiyatı
+--en yüksek fiyatlı ürün OK
+--en düşük fiyatlı ürün OK
+--ortalama hamburger fiyatı OK
 
---Toplam sipariş sayısı
---aktif sipariş sayısı
---son sipariş tutarı
---kasadaki tutar
---bugünkü kazanç
---masa sayısı
+--Toplam sipariş sayısı OK
+--aktif sipariş sayısı OK
+--son sipariş tutarı OK
+--kasadaki tutar OK
+--bugünkü kazanç	?????????				???????
+--masa sayısı OK
+
+
+---------------------------------------------------
+
+istatistiklerin consume edilmesi
