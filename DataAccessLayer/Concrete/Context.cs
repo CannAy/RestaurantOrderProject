@@ -30,5 +30,6 @@ namespace DataAccessLayer.Concrete
         public DbSet<MoneyCase> MoneyCase { get; set; }
         public DbSet<MenuTable> MenuTables { get; set; }
         public DbSet<Slider> Sliders { get; set; }
+        public DbSet<Basket> Baskets { get; set; }
     }
 }
