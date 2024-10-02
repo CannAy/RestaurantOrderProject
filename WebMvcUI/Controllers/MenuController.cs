@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Text;
+using WebUI.Dtos.BasketDtos;
 using WebUI.Dtos.ProductDtos;
 
 namespace WebUI.Controllers
@@ -20,6 +22,22 @@ namespace WebUI.Controllers
             var jsonData = await responseMessage.Content.ReadAsStringAsync();
             var values = JsonConvert.DeserializeObject<List<ResultProductDto>>(jsonData); //listeleme yaptığım için Deserialize.
             return View(values);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddBasket(int id)
+        {
+            CreateBasketDto createBasketDto = new CreateBasketDto();
+            createBasketDto.ProductId = id;
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(createBasketDto);
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var responseMessage = await client.PostAsync("https://localhost:7027/api/Basket", stringContent);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return Json(createBasketDto);
         }
     }
 }
