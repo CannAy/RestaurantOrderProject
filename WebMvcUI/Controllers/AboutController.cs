@@ -9,7 +9,6 @@ namespace WebUI.Controllers
     public class AboutController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
-
         public AboutController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
