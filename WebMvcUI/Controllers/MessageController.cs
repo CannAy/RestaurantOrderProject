@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace SignalRApi.Controllers
+namespace WebUI.Controllers
 {
     public class MessageController : Controller
     {
