@@ -36,7 +36,8 @@ namespace WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateBooking(CreateBookingDto createBookingDto)
         {
-            var client = _httpClientFactory.CreateClient();
+			createBookingDto.Description = "Rezervasyon Alındı";
+			var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(createBookingDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
             var responseMessage = await client.PostAsync("https://localhost:7027/api/Booking", stringContent);
@@ -85,5 +86,21 @@ namespace WebUI.Controllers
             }
             return View();
         }
-    }
+
+		[HttpGet]
+		public async Task<IActionResult> BookingStatusApproved(int id)
+		{
+			var client = _httpClientFactory.CreateClient();
+			await client.GetAsync($"https://localhost:7027/api/Booking/BookingStatusApproved/{id}");
+			return RedirectToAction("Index");
+		}
+
+		[HttpGet]
+		public async Task<IActionResult> BookingStatusCancelled(int id)
+		{
+			var client = _httpClientFactory.CreateClient();
+			await client.GetAsync($"https://localhost:7027/api/Booking/BookingStatusCancelled/{id}");
+			return RedirectToAction("Index");
+		}
+	}
 }

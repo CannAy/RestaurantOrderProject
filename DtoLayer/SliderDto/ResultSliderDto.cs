@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebUI.Dtos.SliderDtos
+namespace DtoLayer.SliderDto
 {
     public class ResultSliderDto
     {
