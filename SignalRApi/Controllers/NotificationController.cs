@@ -62,24 +62,16 @@ namespace SignalRApi.Controllers
 		public IActionResult GetNotification(int id)
 		{
 			var value = _notificationService.TGetById(id);
-			return Ok(value);
+			return Ok(_mapper.Map<GetByIdNotificationDto>(value));
 
 		}
 
 		[HttpPut]
 		public IActionResult UpdateNotification(UpdateNotificationDto updateNotificationDto)
 		{
-			Notification notification = new Notification()
-			{
-				NotificationId = updateNotificationDto.NotificationId,
-				Description = updateNotificationDto.Description,
-				Icon = updateNotificationDto.Icon,
-				Status = updateNotificationDto.Status,
-				Type = updateNotificationDto.Type,
-				Date = updateNotificationDto.Date
-			};
-			_notificationService.TUpdate(notification);
-			return Ok("Güncelleme işlemi başarıyla yapıldı");
+            var value = _mapper.Map<Notification>(updateNotificationDto);
+            _notificationService.TUpdate(value);
+            return Ok("Güncelleme işlemi başarıyla yapıldı");
 		}
 
 		[HttpGet("NotificationStatusChangeToFalse/{id}")]
