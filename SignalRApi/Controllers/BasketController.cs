@@ -49,6 +49,8 @@ namespace SignalRApi.Controllers
             using var context = new Context();
             _basketService.TAdd(new EntityLayer.Entities.Basket()
             {
+                //örneğin, qr tarattık ve bize string bi ifade geldi Bahçe 01 --->qr taratıldıktan sonra o masaya ait id gelmesi gerekiyor buraya, alt sorgu yaparak aşağıdaki MenuTableId ye bu masa id'si gelecek.
+
                 ProductId = createBasketDto.ProductId,
                 Count = 1,
                 MenuTableId = 6,
