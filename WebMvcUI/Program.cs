@@ -1,7 +1,12 @@
 using DataAccessLayer.Concrete;
 using EntityLayer.Entities;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var requireAuthorizePolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build(); //Authorize için
 
 // Add services to the container.
 
@@ -10,7 +15,15 @@ builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Contex
 
 builder.Services.AddHttpClient(); //admin layout category kýsmý için.
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(opt =>
+{
+    opt.Filters.Add(new AuthorizeFilter(requireAuthorizePolicy));
+}); //controller seviyesinde authorize (kütüphanenin kendine özgü account/login sayfasýna yönlendirme yapýyor ilk etapta.
+
+builder.Services.ConfigureApplicationCookie(opts =>
+{
+    opts.LoginPath = "/Login/Index";
+});
 
 var app = builder.Build();
 
@@ -26,6 +39,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

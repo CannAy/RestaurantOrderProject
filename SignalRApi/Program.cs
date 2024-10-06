@@ -91,6 +91,10 @@ builder.Services.AddScoped<IBasketDal, EfBasketDal>();
 builder.Services.AddScoped<INotificationService, NotificationManager>();
 builder.Services.AddScoped<INotificationDal, EfNotificationDal>();
 
+//MessageController için
+builder.Services.AddScoped<IMessageService, MessageManager>();
+builder.Services.AddScoped<IMessageDal, EfMessageDal>();
+
 //basket api'sindeki System.Text.Json.JsonException: A possible object cycle was detected. hatasý için stackoverflow'da bulduk çözümü.
 builder.Services.AddControllersWithViews()
     .AddJsonOptions(options => options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
