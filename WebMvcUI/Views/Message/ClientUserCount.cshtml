@@ -30,7 +30,7 @@
                         $("#connstatus").text(connection.state);
                     }).catch((err) => { console.log(err) });
 
-                    connection.on("ReceivceClientCount", (clientCount) => {
+                    connection.on("ReceiveClientCount", (clientCount) => {
                         $("#clientCountValue").text(clientCount);
                     });
                 });

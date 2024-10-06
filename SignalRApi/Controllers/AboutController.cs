@@ -1,4 +1,5 @@
-﻿using BusinessLayer.Abstract;
+﻿using AutoMapper;
+using BusinessLayer.Abstract;
 using DtoLayer.AboutDto;
 using EntityLayer.Entities;
 using Microsoft.AspNetCore.Http;
@@ -11,29 +12,25 @@ namespace SignalRApi.Controllers
     public class AboutController : ControllerBase
     {
         private readonly IAboutService _aboutService;
-
-        public AboutController(IAboutService aboutService)
+        private readonly IMapper _mapper;
+        public AboutController(IAboutService aboutService, IMapper mapper)
         {
             _aboutService = aboutService;
+            _mapper = mapper;
         }
 
         [HttpGet]
         public IActionResult AboutList()
         {
-            var values = _aboutService.TGetListAll();
-            return Ok(values);
+            var value = _aboutService.TGetListAll();
+            return Ok(_mapper.Map<List<ResultAboutDto>>(value)); //mapping işlemi
         }
 
         [HttpPost]
         public IActionResult CreateAbout(CreateAboutDto createAboutDto)  // create için dışarından parametre alması gerekli methodun
         {
-            About about = new About()
-            {
-                Title = createAboutDto.Title,
-                Description = createAboutDto.Description,
-                ImageUrl = createAboutDto.ImageUrl,
-            };
-            _aboutService.TAdd(about); // about'u döndürmek için üst satırdaki gibi tanımladık.
+            var value = _mapper.Map<About>(createAboutDto);       
+            _aboutService.TAdd(value); 
             return Ok("Hakkımda kısmı başarılı bir şekilde eklendi");
         }
 
@@ -48,14 +45,8 @@ namespace SignalRApi.Controllers
         [HttpPut]
         public IActionResult UpdateAbout(UpdateAboutDto updateAboutDto)
         {
-            About about = new About()
-            {
-                AboutId = updateAboutDto.AboutId,
-                ImageUrl= updateAboutDto.ImageUrl,
-                Description = updateAboutDto.Description,
-                Title= updateAboutDto.Title,
-            };
-            _aboutService.TUpdate(about); //abaout parametresini veriyoruz burada, yukarıdaki satıda tanımladığımız için.
+            var value = _mapper.Map<About>(updateAboutDto);
+            _aboutService.TUpdate(value); //abaout parametresini veriyoruz burada, yukarıdaki satıda tanımladığımız için.
             return Ok("Hakkımda alanı güncellendi");
         }
 
@@ -63,7 +54,7 @@ namespace SignalRApi.Controllers
         public IActionResult GetAbout(int id)
         {
             var value = _aboutService.TGetById(id);
-            return Ok(value);
+            return Ok(_mapper.Map<GetAboutDto>(value));
         }
 
     }

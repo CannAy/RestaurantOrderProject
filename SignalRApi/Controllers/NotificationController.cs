@@ -1,4 +1,5 @@
-﻿using BusinessLayer.Abstract;
+﻿using AutoMapper;
+using BusinessLayer.Abstract;
 using DataAccessLayer.Abstract;
 using DtoLayer.NotificationDto;
 using EntityLayer.Entities;
@@ -12,15 +13,19 @@ namespace SignalRApi.Controllers
 	public class NotificationController : ControllerBase
 	{
 		private readonly INotificationService _notificationService;
-		public NotificationController(INotificationService notificationService)
-		{
-			_notificationService = notificationService;
-		}
+		private readonly IMapper _mapper;
 
-		[HttpGet]
+        public NotificationController(INotificationService notificationService, IMapper mapper)
+        {
+            _notificationService = notificationService;
+            _mapper = mapper;
+        }
+
+        [HttpGet]
 		public IActionResult NotificationList()
 		{
-			return Ok(_notificationService.TGetListAll());
+			var values = _notificationService.TGetListAll();
+			return Ok(_mapper.Map<List<ResultNotificationDto>>(values));
 		}
 
 		[HttpGet("NotificationCountByStatusFalse")]
@@ -38,15 +43,10 @@ namespace SignalRApi.Controllers
 		[HttpPost]
 		public IActionResult CreateNotification(CreateNotificationDto createNotificationDto)
 		{
-			Notification notification = new Notification()
-			{
-				Description = createNotificationDto.Description,
-				Icon = createNotificationDto.Icon,
-				Status = false,
-				Type = createNotificationDto.Type,
-				Date = Convert.ToDateTime(DateTime.Now.ToShortDateString())
-			}; 
-			_notificationService.TAdd(notification);
+			createNotificationDto.Status =false;
+			createNotificationDto.Date = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+			var value = _mapper.Map<Notification>(createNotificationDto);
+			_notificationService.TAdd(value);
 			return Ok("Ekleme işlemi başarıyla yapıldı");
 		}
 
