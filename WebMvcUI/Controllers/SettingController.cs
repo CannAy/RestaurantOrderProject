@@ -38,7 +38,7 @@ namespace WebUI.Controllers
                 user.UserName = userEditDto.Username;
                 user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, userEditDto.Password);
                 await _userManager.UpdateAsync(user);
-                return RedirectToAction("Index", "Category"); //Category/Index'e yönlendir.
+                return RedirectToAction("Index", "Category"); //    Category/Index'e yönlendir.
             }
             return View();
         }

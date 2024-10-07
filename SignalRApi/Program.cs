@@ -1,8 +1,10 @@
 using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules.BookingValidations;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
+using FluentValidation;
 using SignalRApi.Hubs;
 using System.Reflection;
 using System.Text.Json.Serialization;
@@ -93,6 +95,8 @@ builder.Services.AddScoped<INotificationDal, EfNotificationDal>();
 //MessageController için
 builder.Services.AddScoped<IMessageService, MessageManager>();
 builder.Services.AddScoped<IMessageDal, EfMessageDal>();
+
+builder.Services.AddValidatorsFromAssemblyContaining<CreateBookingValidation>(); //CreateBooking'te tanýmladýðýmýz validation için.
 
 //basket api'sindeki System.Text.Json.JsonException: A possible object cycle was detected. hatasý için stackoverflow'da bulduk çözümü.
 builder.Services.AddControllersWithViews()
