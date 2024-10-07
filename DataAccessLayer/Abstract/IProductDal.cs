@@ -22,5 +22,6 @@ namespace DataAccessLayer.Abstract
 
         decimal TotalPriceByDrinkCategory();
         decimal TotalPriceBySaladCategory();
+        List<Product>GetLast9Products();
     }
 }

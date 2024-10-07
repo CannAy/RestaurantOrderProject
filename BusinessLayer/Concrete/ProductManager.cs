@@ -97,5 +97,10 @@ namespace BusinessLayer.Concrete
         {
             return _productDal.TotalPriceBySaladCategory();
         }
-    }
+
+		public List<Product> TGetLast9Products()
+		{
+			return _productDal.GetLast9Products();
+		}
+	}
 }
