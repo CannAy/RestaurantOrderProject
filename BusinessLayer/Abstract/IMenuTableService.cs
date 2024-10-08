@@ -10,5 +10,7 @@ namespace BusinessLayer.Abstract
     public interface IMenuTableService:IGenericService<MenuTable>
     {
         int TMenuTableCount();
+        void TChangeMenuTableStatusToTrue(int id); //dolu
+        void TChangeMenuTableStatusToFalse(int id); //boş 
     }
 }

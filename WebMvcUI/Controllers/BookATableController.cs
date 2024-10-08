@@ -40,7 +40,7 @@ namespace WebUI.Controllers
             string value = item[0]["location"].ToString();
             ViewBag.location = value;
 
-            createBookingDto.Description = "abc";
+            createBookingDto.Description = "Rezervasyon";
 
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(createBookingDto);

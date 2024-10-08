@@ -14,10 +14,11 @@ namespace WebUI.Controllers
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int id)
         {
+            TempData["id"]=id;
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7027/api/Basket/BasketListByMenuTableWithProductName?id=6");
+            var responseMessage = await client.GetAsync("https://localhost:7027/api/Basket/BasketListByMenuTableWithProductName?id="+id);
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
@@ -29,6 +30,7 @@ namespace WebUI.Controllers
         
         public async Task<IActionResult> DeleteBasket(int id)
         {
+            id=int.Parse(TempData["id"].ToString());
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.DeleteAsync($"https://localhost:7027/api/Basket/{id}");
             if (responseMessage.IsSuccessStatusCode)

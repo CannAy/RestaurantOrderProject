@@ -37,8 +37,14 @@
             <div class="col-md-6">
                 <div class="map_container">
                     <iframe src="@ViewBag.location" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    @* <div id="googleMap"></div> *@
                 </div>
             </div>
         </div>
     </div>
 </section>
+@* 
+// Sayfa tamamen yüklendikten sonra haritayı başlatmak için:
+window.onload = function () {
+    myMap();  // Sayfa tamamen yüklendikten sonra harita başlatılır
+}; *@

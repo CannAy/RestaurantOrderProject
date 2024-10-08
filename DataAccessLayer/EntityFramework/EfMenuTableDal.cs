@@ -14,7 +14,21 @@ namespace DataAccessLayer.EntityFramework
     {
         public EfMenuTableDal(Context context) : base(context)
         {
+        }
+        public void ChangeMenuTableStatusToFalse(int id)
+        {
+            using var context = new Context();
+            var value = context.MenuTables.Where(x => x.MenuTableId == id).FirstOrDefault();
+            value.Status = false;
+            context.SaveChanges();
+        }
 
+        public void ChangeMenuTableStatusToTrue(int id)
+        {
+            using var context = new Context();
+            var value = context.MenuTables.Where(x => x.MenuTableId == id).FirstOrDefault();
+            value.Status = true;
+            context.SaveChanges();
         }
 
         public int MenuTableCount()

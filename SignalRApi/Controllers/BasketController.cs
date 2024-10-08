@@ -52,11 +52,11 @@ namespace SignalRApi.Controllers
                 //örneğin, qr tarattık ve bize string bi ifade geldi Bahçe 01 --->qr taratıldıktan sonra o masaya ait id gelmesi gerekiyor buraya, alt sorgu yaparak aşağıdaki MenuTableId ye bu masa id'si gelecek.
 
                 ProductId = createBasketDto.ProductId,
+                MenuTableId = createBasketDto.MenuTableId,
                 Count = 1,
-                MenuTableId = 6,
                 Price = context.Products
                 .Where(x => x.ProductId == createBasketDto.ProductId).Select(y => y.Price).FirstOrDefault(),
-                TotalPrice = 0               
+                TotalPrice = createBasketDto.TotalPrice
             });
             return Ok();
         }
