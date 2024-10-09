@@ -7,8 +7,9 @@ using WebUI.Dtos.IdentityDtos;
 namespace WebUI.Controllers
 {
 	[AllowAnonymous]
-	
-	public class LoginController : Controller
+    //[Authorize]
+
+    public class LoginController : Controller
 	{
 		private readonly SignInManager<AppUser> _signInManager;
 

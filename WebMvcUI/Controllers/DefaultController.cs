@@ -10,7 +10,7 @@ using System.Text.Json.Nodes;
 
 namespace WebUI.Controllers
 {
-	[AllowAnonymous] //mevcuttaki authorize işlemlerinden muaf oluyor.
+    [AllowAnonymous] //mevcuttaki authorize işlemlerinden muaf oluyor.
     public class DefaultController : Controller
 	{
 		private readonly IHttpClientFactory _httpClientFactory;

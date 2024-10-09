@@ -1,5 +1,6 @@
 using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
+using BusinessLayer.Extensions;
 using BusinessLayer.ValidationRules.BookingValidations;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
@@ -27,74 +28,8 @@ builder.Services.AddSignalR();
 builder.Services.AddDbContext<Context>();
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-//API CONTROLLER//
-//AboutController için
-builder.Services.AddScoped<IAboutService, AboutManager>();
-builder.Services.AddScoped<IAboutDal, EfAboutDal>();
+builder.Services.ExtensionDependencies();
 
-//BookingController için
-builder.Services.AddScoped<IBookingService, BookingManager>();
-builder.Services.AddScoped<IBookingDal, EfBookingDal>();
-
-//CategoryController için
-builder.Services.AddScoped<ICategoryService, CategoryManager>();
-builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();
-
-//ContactController için
-builder.Services.AddScoped<IContactService, ContactManager>();
-builder.Services.AddScoped<IContactDal, EfContactDal>();
-
-//DiscountController için
-builder.Services.AddScoped<IDiscountService, DiscountManager>();
-builder.Services.AddScoped<IDiscountDal, EfDiscountDal>();
-
-//FeatureController için
-builder.Services.AddScoped<IFeatureService, FeatureManager>();
-builder.Services.AddScoped<IFeatureDal, EfFeatureDal>();
-
-//ProductController için
-builder.Services.AddScoped<IProductService, ProductManager>();
-builder.Services.AddScoped<IProductDal, EfProductDal>();
-
-//SocialMediaController için
-builder.Services.AddScoped<ISocialMediaService, SocialMediaManager>();
-builder.Services.AddScoped<ISocialMediaDal, EfSocialMediaDal>();
-
-//TestimonialController için
-builder.Services.AddScoped<ITestimonialService, TestimonialManager>();
-builder.Services.AddScoped<ITestimonialDal, EfTestimonialDal>();
-
-//OrderController için
-builder.Services.AddScoped<IOrderService, OrderManager>();
-builder.Services.AddScoped<IOrderDal, EfOrderDal>();
-
-//OrderDetailController için
-builder.Services.AddScoped<IOrderDetailService, OrderDetailManager>();
-builder.Services.AddScoped<IOrderDetailDal, EfOrderDetailDal>();
-
-//MoneyCaseController için
-builder.Services.AddScoped<IMoneyCaseService, MoneyCaseManager>();
-builder.Services.AddScoped<IMoneyCaseDal, EfMoneyCaseDal>();
-
-//MenuTableController için
-builder.Services.AddScoped<IMenuTableService, MenuTableManager>();
-builder.Services.AddScoped<IMenuTableDal, EfMenuTableDal>();
-
-//SlidersController için
-builder.Services.AddScoped<ISliderService, SliderManager>();
-builder.Services.AddScoped<ISliderDal, EfSliderDal>();
-
-//BasketController için
-builder.Services.AddScoped<IBasketService, BasketManager>();
-builder.Services.AddScoped<IBasketDal, EfBasketDal>();
-
-//NotificationController için
-builder.Services.AddScoped<INotificationService, NotificationManager>();
-builder.Services.AddScoped<INotificationDal, EfNotificationDal>();
-
-//MessageController için
-builder.Services.AddScoped<IMessageService, MessageManager>();
-builder.Services.AddScoped<IMessageDal, EfMessageDal>();
 
 builder.Services.AddValidatorsFromAssemblyContaining<CreateBookingValidation>(); //CreateBooking'te tanýmladýðýmýz validation için.
 
