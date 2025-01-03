@@ -45,7 +45,7 @@ Diğer:
 
 ---
 
-## Projeye Ait Video ve Görseller
+## Projeye Ait Görseller
 
 ![Slayt1](https://github.com/user-attachments/assets/3ff249a8-fb24-4f44-937a-6fd476ff26b5)
 ![Slayt2](https://github.com/user-attachments/assets/edfefb23-05e9-456a-be8c-f33335257d5a)
